@@ -1,0 +1,2 @@
+lib/app/modules/register/register_controller.dart
+test/app/modules/register/register_controller_test.dart
