@@ -29,7 +29,7 @@ class _UserPageState extends ModularState<UserPage, UserController> {
             return GestureDetector(
               onTap: () {},
               child: ListTile(
-                leading: Icon(Icons.supervised_user_circle),
+                leading: CircleAvatar(child: Text(user.username[0].toUpperCase() + user.username.split(" ")[1][0].toUpperCase()),),
                 title: Text(user.username),
                 subtitle: Text(user.email),
               ),
