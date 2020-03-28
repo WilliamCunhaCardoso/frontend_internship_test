@@ -1,9 +1,9 @@
 import 'package:flutter_modular/flutter_modular.dart';
 
-import 'profile_page.dart';
-import 'registration_page.dart';
+import 'pages/profile_page.dart';
+import 'pages/registration_page.dart';
 import 'user_controller.dart';
-import 'user_page.dart';
+import 'pages/user_page.dart';
 
 class UserModule extends ChildModule {
   @override
