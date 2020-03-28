@@ -20,6 +20,19 @@ abstract class _UserControllerBase with Store {
       city: 'Rio de Janeiro',
       state: 'Rio de Janeiro',
     ),
+    UserModel(
+      username: 'John Doe',
+      email: 'john.doe@email.com',
+      phone: '+55 (85) 9.8865-4321',
+      cpf: '508.431.550-94',
+      cep: '60810-060',
+      street: 'Av. Washington Soares',
+      number: 85,
+      complement: 'Loja 85',
+      district: 'Edson Queiroz',
+      city: 'Fortaleza',
+      state: 'Ceará',
+    ),
   ];
 
   @observable
