@@ -1,7 +1,7 @@
 import 'package:flutter_modular/flutter_modular_test.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:frontent_internship_test/app/modules/profile/profile_controller.dart';
+// import 'package:frontent_internship_test/app/modules/profile/profile_controller.dart';
 import 'package:frontent_internship_test/app/modules/profile/profile_module.dart';
 
 void main() {
