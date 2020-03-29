@@ -10,7 +10,8 @@ class AppWidget extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
         appBarTheme: AppBarTheme(
-          iconTheme: IconThemeData(color: Colors.blue),
+          elevation: 0,
+          iconTheme: IconThemeData(color: Colors.deepPurple, size: 40),
           color: Colors.white,
           textTheme: TextTheme(
             title: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
