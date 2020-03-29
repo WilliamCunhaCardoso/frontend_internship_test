@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
@@ -31,10 +29,12 @@ class _UserPageState extends ModularState<UserPage, UserController> {
             var user = userController.userList[index];
             return GestureDetector(
               onTap: () => Modular.to.pushNamed('/profile', arguments: user),
-              child: ListTile(
-                leading: CustomCircleAvatar(text: user.username),
-                title: Text(user.username),
-                subtitle: Text(user.email),
+              child: Card(
+                child: ListTile(
+                  leading: CustomCircleAvatar(text: user.username),
+                  title: Text(user.username),
+                  subtitle: Text(user.email),
+                ),
               ),
             );
           },
@@ -44,6 +44,7 @@ class _UserPageState extends ModularState<UserPage, UserController> {
         onPressed: () => Modular.to.pushNamed('/register'),
         label: Text('Add User'),
         icon: Icon(Icons.add),
+        backgroundColor: Colors.deepPurple,
       ),
     );
   }

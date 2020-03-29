@@ -26,51 +26,14 @@ mixin _$UserController on _UserControllerBase, Store {
     }, _$userListAtom, name: '${_$userListAtom.name}_set');
   }
 
-  final _$userProfileAtom = Atom(name: '_UserControllerBase.userProfile');
-
-  @override
-  dynamic get userProfile {
-    _$userProfileAtom.context.enforceReadPolicy(_$userProfileAtom);
-    _$userProfileAtom.reportObserved();
-    return super.userProfile;
-  }
-
-  @override
-  set userProfile(dynamic value) {
-    _$userProfileAtom.context.conditionallyRunInAction(() {
-      super.userProfile = value;
-      _$userProfileAtom.reportChanged();
-    }, _$userProfileAtom, name: '${_$userProfileAtom.name}_set');
-  }
-
   final _$_UserControllerBaseActionController =
       ActionController(name: '_UserControllerBase');
 
   @override
-  dynamic showUserList() {
+  dynamic addUser(UserModel user) {
     final _$actionInfo = _$_UserControllerBaseActionController.startAction();
     try {
-      return super.showUserList();
-    } finally {
-      _$_UserControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic showUniqueUser() {
-    final _$actionInfo = _$_UserControllerBaseActionController.startAction();
-    try {
-      return super.showUniqueUser();
-    } finally {
-      _$_UserControllerBaseActionController.endAction(_$actionInfo);
-    }
-  }
-
-  @override
-  dynamic addUser() {
-    final _$actionInfo = _$_UserControllerBaseActionController.startAction();
-    try {
-      return super.addUser();
+      return super.addUser(user);
     } finally {
       _$_UserControllerBaseActionController.endAction(_$actionInfo);
     }
@@ -78,8 +41,7 @@ mixin _$UserController on _UserControllerBase, Store {
 
   @override
   String toString() {
-    final string =
-        'userList: ${userList.toString()},userProfile: ${userProfile.toString()}';
+    final string = 'userList: ${userList.toString()}';
     return '{$string}';
   }
 }

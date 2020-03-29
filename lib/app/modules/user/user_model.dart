@@ -5,7 +5,7 @@ class UserModel {
   //* Personal Data
   final String email;
   final String phone;
-  // final DateTime birth;
+  final String birth;
   final String cpf;
 
   //* Address Data
@@ -21,7 +21,7 @@ class UserModel {
     this.username, 
     this.email,
     this.phone,
-    // this.birth,
+    this.birth,
     this.cpf,
     this.cep,
     this.street,
@@ -31,12 +31,4 @@ class UserModel {
     this.city,
     this.state,
   });
-
-  // factory UserModel.fromJson(Map<String, dynamic> json) {
-  //   return UserModel(
-  //       //field: json[''],
-  //       );
-  // }
-
-  // Map<String, dynamic> toJson() => {};
 }
