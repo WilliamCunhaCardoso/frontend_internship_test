@@ -22,13 +22,14 @@ class _UserPageState extends ModularState<UserPage, UserController> {
         title: Text(widget.title),
         centerTitle: true,
       ),
+      //* List User data
       body: Observer(
         builder: (_) => ListView.builder(
           itemCount: userController.userList.length,
           itemBuilder: (_, index) {
             var user = userController.userList[index];
             return GestureDetector(
-              onTap: () => Modular.to.pushNamed('/profile', arguments: user),
+              onTap: () => Modular.to.pushNamed('/profile', arguments: user), //* Route to profile
               child: Card(
                 child: ListTile(
                   leading: CustomCircleAvatar(text: user.username),

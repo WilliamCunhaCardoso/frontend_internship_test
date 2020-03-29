@@ -31,6 +31,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         child: ListView(
+          //* Parametrized field that shows user information
           children: <Widget>[
             SizedBox(height: 15),
             CustomCircleAvatar(

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:frontent_internship_test/app/modules/register/widgets/bottom_sheet.dart';
 import 'package:frontent_internship_test/app/modules/user/user_controller.dart';
-// import 'package:frontent_internship_test/app/modules/user/user_model.dart';
 import 'package:frontent_internship_test/app/shared/titleSession.dart';
 
 import 'register_controller.dart';
@@ -24,148 +24,160 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-          centerTitle: true,
-          leading: IconButton(
-            icon: Icon(Icons.navigate_before),
-            onPressed: () => Modular.to.pop(),
-          ),
+      appBar: AppBar(
+        title: Text(widget.title),
+        centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before), //* adapt icon to prototype
+          onPressed: () => Modular.to.pop(),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: ListView(
-            children: <Widget>[
-              //* Personal Fields
-              TitleSession(text: 'personal data'),
-              Observer(
-                builder: (_) => Field(
-                  label: 'Name',
-                  controller: registerController.usernameController,
-                  onChanged: registerController.setUsername,
-                  cleaner: registerController.usernameController.clear,
-                  // visible: registerController.isUsernameValid,
-                ),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 16),
+        child: ListView(
+          children: <Widget>[
+            //* Field parametrized in the widget Field
+            //* All must stay inside an observer to update values
+            //* all fields contains a controller, a cleaner function controller, save information function, label and visible switch to icon
+            //* Personal Fields
+            TitleSession(text: 'personal data'),
+            Observer(
+              builder: (_) => Field(
+                label: 'Name',
+                controller: registerController.usernameController,
+                onChanged: registerController.setUsername,
+                cleaner: registerController.usernameController.clear,
+                visible: registerController.isUsernameValid,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'Email',
                 controller: registerController.emailController,
                 onChanged: registerController.setEmail,
                 cleaner: registerController.emailController.clear,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isEmailValid,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'Phone',
                 controller: registerController.phoneController,
                 cleaner: registerController.phoneController.clear,
                 onChanged: registerController.setPhone,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isPhoneValid,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'Date of Birth',
                 controller: registerController.birthController,
                 cleaner: registerController.birthController.clear,
                 onChanged: registerController.setBirth,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isBirthValid,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'CPF',
                 controller: registerController.cpfController,
                 cleaner: registerController.cpfController.clear,
                 onChanged: registerController.setCPF,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isCPFValid,
               ),
+            ),
 
-              //* Address fields
-              TitleSession(text: 'address data'),
-              Field(
-                label: 'CEP', controller: registerController.cepController,
+            //* Address fields
+            TitleSession(text: 'address data'),
+            Observer(
+              builder: (_) => Field(
+                label: 'CEP',
+                controller: registerController.cepController,
                 cleaner: registerController.cpfController.clear,
                 onChanged: registerController.setCEP,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isCEPValid,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'Street',
                 controller: registerController.streetController,
                 cleaner: registerController.cpfController.clear,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isStreetValid,
                 onChanged: registerController.setStreet,
               ),
-              Row(
-                children: <Widget>[
-                  Expanded(
-                    flex: 2,
-                    child: Field(
+            ),
+            Row(
+              children: <Widget>[
+                Expanded(
+                  flex: 2,
+                  child: Observer(
+                    builder: (_) => Field(
                       label: 'Number',
                       controller: registerController.numberController,
                       cleaner: registerController.numberController.clear,
-                      // visible: registerController.isUsernameValid,
+                      visible: registerController.isNumberValid,
                       onChanged: registerController.setNumber,
                     ),
                   ),
-                  SizedBox(width: 10),
-                  Expanded(
-                    flex: 3,
-                    child: Field(
+                ),
+                SizedBox(width: 10),
+                Expanded(
+                  flex: 3,
+                  child: Observer(
+                    builder: (_) => Field(
                       label: 'Complement',
                       controller: registerController.complementController,
                       cleaner: registerController.complementController.clear,
-                      // visible: registerController.isUsernameValid,
+                      visible: registerController.isComplementValid,
                       onChanged: registerController.setComplement,
                     ),
                   ),
-                ],
-              ),
-              Field(
+                ),
+              ],
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'District',
                 controller: registerController.districtController,
                 cleaner: registerController.districtController.clear,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isDistrictValid,
                 onChanged: registerController.setDistrict,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'City',
                 controller: registerController.cityController,
                 cleaner: registerController.cityController.clear,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isCityValid,
                 onChanged: registerController.setCity,
               ),
-              Field(
+            ),
+            Observer(
+              builder: (_) => Field(
                 label: 'State',
                 controller: registerController.stateController,
                 cleaner: registerController.stateController.clear,
-                // visible: registerController.isUsernameValid,
+                visible: registerController.isStateValid,
                 onChanged: registerController.setState,
               ),
-              SizedBox(height: 40)
-            ],
-          ),
-        ),
-        bottomSheet: Container(
-          color: registerController.isValidAll ? Colors.green : Colors.grey,
-          height: 40,
-          width: MediaQuery.of(context).size.width,
-          child: GestureDetector(
-            child: Row(
-              children: <Widget>[
-                Expanded(flex: 3, child: Icon(Icons.check)),
-                Expanded(
-                  flex: 100,
-                  child: Text(
-                    'register user'.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 16),
-                  ),
-                )
-              ],
             ),
-            onTap: registerController.isValidAll
-                ? () {
-                    registerController.addUser();
-                    Modular.to.pop();
-                  }
-                : null,
-          ),
-        ));
+            SizedBox(height: 40)
+          ],
+        ),
+      ),
+      //* Paraetrized bottom sheet
+      //* it switches the color between disabled and enabled
+      //* needs observer to update boolean value
+      bottomSheet: Observer(
+        builder: (_) => CustomBottomSheet(
+          colors: registerController.isValidAll ? Colors.green : Colors.grey,
+          function: registerController.addUser, //* add user function
+          router: Modular.to.pop,
+          functionEnable: registerController.isValidAll,
+        ),
+      ),
+    );
   }
 }

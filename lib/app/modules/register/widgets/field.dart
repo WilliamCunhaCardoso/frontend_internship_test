@@ -1,29 +1,44 @@
 import 'package:flutter/material.dart';
 
-class Field extends StatelessWidget {
+class Field extends StatefulWidget {
+  //* Declaration
   final String label;
   final TextEditingController controller;
-  final onChanged;
-  final cleaner;
-  final Widget icon;
+  final Function onChanged;
+  final VoidCallback cleaner;
+  final bool visible;
 
+  //* Constructor
   const Field({
     Key key,
     this.label,
     this.controller,
-    this.onChanged, this.cleaner, this.icon,
+    this.onChanged,
+    this.cleaner,
+    this.visible,
   }) : super(key: key);
 
   @override
+  _FieldState createState() => _FieldState();
+}
+
+class _FieldState extends State<Field> {
+  @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.only(top: 8),
+      padding: const EdgeInsets.only(top: 8), //* to give some space to this widget
       child: TextFormField(
-        onChanged: this.onChanged,
-        controller: this.controller,
+        onChanged: this.widget.onChanged, //* function that saves the value
+        controller: this.widget.controller, //* controller parametrized
         decoration: InputDecoration(
-          hintText: this.label,
-          suffixIcon: FlatButton(onPressed: ()=> cleaner(), child: Icon(Icons.delete_forever)),
+          hintText: this.widget.label,
+          suffixIcon: FlatButton(
+            onPressed: widget.cleaner, //* function that cleans the controller
+            child: Visibility(
+              visible: this.widget.visible, //* hide and show the icon to clean controller
+              child: Icon(Icons.delete_forever),
+            ),
+          ),
           focusedBorder:
               OutlineInputBorder(borderSide: BorderSide(color: Colors.black)),
           border:
