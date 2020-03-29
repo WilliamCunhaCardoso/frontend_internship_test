@@ -1,0 +1,2 @@
+lib/app/modules/register/validate_store.dart
+test/app/modules/register/validate_store_test.dart

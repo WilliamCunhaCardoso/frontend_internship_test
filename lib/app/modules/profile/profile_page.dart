@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:frontent_internship_test/app/modules/profile/widgets/information.dart';
 import 'package:frontent_internship_test/app/modules/user/user_model.dart';
 import 'package:frontent_internship_test/app/shared/circle_avatar.dart';
@@ -22,6 +23,10 @@ class _ProfilePageState extends State<ProfilePage> {
       appBar: AppBar(
         title: Text(widget.title),
         centerTitle: true,
+        leading: IconButton(
+          icon: Icon(Icons.navigate_before),
+          onPressed: () => Modular.to.pop(),
+        ),
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -38,20 +43,19 @@ class _ProfilePageState extends State<ProfilePage> {
             SizedBox(height: 25),
             TitleSession(text: 'personal data'),
             InfoFields(description: 'Email', value: widget.user.email),
-            InfoFields(description: 'Email', value: widget.user.phone),
-            // InfoFields(description: 'Email', value: widget.user.email),
-            InfoFields(description: 'Email', value: widget.user.cpf),
+            InfoFields(description: 'Phone', value: widget.user.phone),
+            InfoFields(description: 'Birth', value: widget.user.birth),
+            InfoFields(description: 'CPF', value: widget.user.cpf),
             TitleSession(text: 'address data'),
-            InfoFields(description: 'Email', value: widget.user.cep),
-            InfoFields(description: 'Email', value: widget.user.street),
+            InfoFields(description: 'CEP', value: widget.user.cep),
+            InfoFields(description: 'Street', value: widget.user.street),
             InfoFields(
-              description: 'Email',
-              value: widget.user.number.toString(),
-            ),
-            InfoFields(description: 'Email', value: widget.user.complement),
-            InfoFields(description: 'Email', value: widget.user.district),
-            InfoFields(description: 'Email', value: widget.user.city),
-            InfoFields(description: 'Email', value: widget.user.state),
+                description: 'Number', value: widget.user.number.toString()),
+            InfoFields(
+                description: 'Complement', value: widget.user.complement),
+            InfoFields(description: 'District', value: widget.user.district),
+            InfoFields(description: 'City', value: widget.user.city),
+            InfoFields(description: 'State', value: widget.user.state),
           ],
         ),
       ),

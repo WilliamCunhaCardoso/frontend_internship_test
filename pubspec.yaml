@@ -17,7 +17,7 @@ environment:
   sdk: ">=2.1.0 <3.0.0"
 
 dependencies:
-  dio: ^3.0.9
+  flutter_masked_text: ^0.8.0
   flutter_mobx: ^1.1.0
   mobx: ^1.1.1
   flutter_modular: ^1.0.0
