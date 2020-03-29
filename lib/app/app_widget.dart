@@ -9,6 +9,13 @@ class AppWidget extends StatelessWidget {
       title: 'Qwkin Test',
       theme: ThemeData(
         primarySwatch: Colors.blue,
+        appBarTheme: AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.blue),
+          color: Colors.white,
+          textTheme: TextTheme(
+            title: TextStyle(color: Colors.black, fontWeight: FontWeight.w600, fontSize: 18),
+          ),
+        ),
       ),
       initialRoute: '/',
       onGenerateRoute: Modular.generateRoute,
