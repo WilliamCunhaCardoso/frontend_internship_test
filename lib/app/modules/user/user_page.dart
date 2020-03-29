@@ -1,6 +1,9 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:frontent_internship_test/app/shared/circle_avatar.dart';
 import 'user_controller.dart';
 
 class UserPage extends StatefulWidget {
@@ -27,9 +30,9 @@ class _UserPageState extends ModularState<UserPage, UserController> {
           itemBuilder: (_, index) {
             var user = userController.userList[index];
             return GestureDetector(
-              onTap: () {},
+              onTap: () => Modular.to.pushNamed('/profile', arguments: user),
               child: ListTile(
-                leading: CircleAvatar(child: Text(user.username[0].toUpperCase() + user.username.split(" ")[1][0].toUpperCase()),),
+                leading: CustomCircleAvatar(text: user.username),
                 title: Text(user.username),
                 subtitle: Text(user.email),
               ),
