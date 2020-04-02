@@ -34,7 +34,7 @@ class _HomePageState extends ViewState<HomePage, HomeController> {
         key: globalKey,
         body: Container(
           child: ListTile(
-            // title: Text(controller.users[0] == null ? '' : controller.users[0].username),
+            title: Text(controller.users[1] == null ? '' : controller.users[1].username),
           ),
         ),
       ),

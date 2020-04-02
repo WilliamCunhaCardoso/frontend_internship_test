@@ -23,21 +23,45 @@ class HomeController extends Controller {
   @override
   // this is called automatically by the parent class
   void initListeners() {
+    // * Unique User Listeners
+    // * On Next from Get User
     homePresenter.getUserOnNext = (UserModel user) {
       print(user.toString());
       _user = user;
       refreshUI(); // Refreshes the UI manually
     };
+    // * On Complete from Get User
     homePresenter.getUserOnComplete = () {
       print('User retrieved'); 
     };
-
+    // * On Error from Get User
     // On error, show a snackbar, remove the user, and refresh the UI
     homePresenter.getUserOnError = (e) {
       print('Could not retrieve user.');
       ScaffoldState state = getState();
       state.showSnackBar(SnackBar(content: Text(e.message)));
       _user = null;
+      refreshUI(); // Refreshes the UI manually
+    };
+
+    // * List Users Listeners
+    // * On Next Get All Users
+    homePresenter.getAllUsersOnNext = (List<UserModel> users) {
+      print(users.toString());
+      _users = users;
+      refreshUI(); // Refreshes the UI manually
+    };
+    // * On Complete Get All Users
+    homePresenter.getAllUsersOnComplete = () {
+      print('Users retrieved'); 
+    };
+    // * On Error Get All Users
+    // On error, show a snackbar, remove the user, and refresh the UI
+    homePresenter.getAllUsersOnError = (e) {
+      print('Could not retrieve the list of users.');
+      ScaffoldState state = getState();
+      state.showSnackBar(SnackBar(content: Text(e.message)));
+      _users = null;
       refreshUI(); // Refreshes the UI manually
     };
   }
