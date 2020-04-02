@@ -17,6 +17,12 @@ class _HomePageState extends ViewState<HomePage, HomeController> {
   _HomePageState() : super(HomeController(DataUsersRepository()));
 
   @override
+  void initState() {
+    super.initState();
+    controller.getUser();
+    controller.getAllUsers();
+  }
+  @override
   Widget buildPage() {
     return Scaffold(
       appBar: AppBar(
@@ -24,7 +30,14 @@ class _HomePageState extends ViewState<HomePage, HomeController> {
         centerTitle: true,
       ),
       //* List User data
-      body: Container(),
+      body: Scaffold(
+        key: globalKey,
+        body: Container(
+          child: ListTile(
+            // title: Text(controller.users[0] == null ? '' : controller.users[0].username),
+          ),
+        ),
+      ),
       floatingActionButton: FloatingActionButton.extended(
         onPressed: () {}, //todo route to register view
         label: Text('Add User'),

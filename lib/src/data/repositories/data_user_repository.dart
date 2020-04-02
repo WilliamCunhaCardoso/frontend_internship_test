@@ -54,4 +54,11 @@ class DataUsersRepository extends UserRepository {
 
     return users.firstWhere((user) => user.userId == userId);
   }
+
+  @override
+  Future<UserModel> addUser(UserModel user) {
+    users.add(user);
+    
+    return null;
+  }
 }

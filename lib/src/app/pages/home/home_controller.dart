@@ -4,15 +4,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
 class HomeController extends Controller {
-  int _counter;
+  // * Single User Var
   UserModel _user;
-  int get counter => _counter;
+  // * Single User Getter
   UserModel get user => _user; // data used by the View
+  // * List Users Var
+  List<UserModel> _users;
+  // * List Users Getter
+  List<UserModel> get users => _users; // data used by the View
+  
   final HomePresenter homePresenter;
   // Presenter should always be initialized this way
+
   HomeController(usersRepo)
-      : _counter = 0,
-        homePresenter = HomePresenter(usersRepo),
+      : homePresenter = HomePresenter(usersRepo),
         super();
 
   @override
@@ -24,7 +29,7 @@ class HomeController extends Controller {
       refreshUI(); // Refreshes the UI manually
     };
     homePresenter.getUserOnComplete = () {
-      print('User retrieved');
+      print('User retrieved'); 
     };
 
     // On error, show a snackbar, remove the user, and refresh the UI
@@ -38,10 +43,12 @@ class HomeController extends Controller {
   }
 
   void getUser() => homePresenter.getUser('01');
+  void getAllUsers() => homePresenter.getAllUsers();
   void getUserwithError() => homePresenter.getUser('test-uid231243');
 
   void buttonPressed() {
-    _counter++;
+    // _counter++;
+    //todo move to some page
     refreshUI();
   }
 

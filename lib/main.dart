@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'src/app/pages/home/home_view.dart';
+
 void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
@@ -7,6 +9,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Qwkin Test',
+      home: HomePage(),
       theme: ThemeData(
         fontFamily: 'Open Sans',
         primarySwatch: Colors.blue,
@@ -15,7 +18,7 @@ class MyApp extends StatelessWidget {
           iconTheme: IconThemeData(color: Colors.deepPurple, size: 40),
           color: Colors.white,
           textTheme: TextTheme(
-            title: TextStyle(
+            headline6: TextStyle(
               color: Colors.black,
               fontWeight: FontWeight.w600,
               fontSize: 18,
