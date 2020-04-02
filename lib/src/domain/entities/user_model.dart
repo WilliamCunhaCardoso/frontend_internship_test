@@ -1,5 +1,9 @@
 class UserModel {
+  //* Na doc da Clean Architecture o nome do arquivo e da classe são apenas o nome singular como User.
+  //* Como, com propósito de fácil leitura, decidi persistir com a terminação model. Utilizando snack case para nomenclatura de arquivo
+
   //* Header Data
+  final String userId;
   final String username;
 
   //* Personal Data
@@ -18,7 +22,8 @@ class UserModel {
   final String state;
 
   UserModel({
-    this.username, 
+    this.userId, 
+    this.username,
     this.email,
     this.phone,
     this.birth,
