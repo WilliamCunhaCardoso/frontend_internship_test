@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:frontent_internship_test/src/app/pages/pages.dart';
 import 'package:frontent_internship_test/src/app/utils/router.dart';
 
@@ -11,8 +12,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Qwkin Test',
-      onGenerateRoute: Router.generateRoute,
-      initialRoute: Pages.home,
+      // onGenerateRoute: Router.generateRoute,
+      // initialRoute: Pages.home,
+      home: HomePage(),
       theme: ThemeData(
         fontFamily: 'Open Sans',
         primarySwatch: Colors.blue,
@@ -31,7 +33,6 @@ class MyApp extends StatelessWidget {
         ),
       ),
       debugShowCheckedModeBanner: false,
-      // home: ,
     );
   }
 }

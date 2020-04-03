@@ -3,26 +3,26 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 
 class RegisterController extends Controller {
   // * Vars
-  TextEditingController usernameController;
-  TextEditingController emailController;
-  TextEditingController streetController;
-  TextEditingController numberController;
-  TextEditingController complementController;
-  TextEditingController districtController;
-  TextEditingController cityController;
-  TextEditingController stateController;
+  // TextEditingController usernameController;
+  // TextEditingController emailController;
+  // TextEditingController streetController;
+  // TextEditingController numberController;
+  // TextEditingController complementController;
+  // TextEditingController districtController;
+  // TextEditingController cityController;
+  // TextEditingController stateController;
 
   // * Initializing Listeners
   @override
   void initListeners() {
-    usernameController = TextEditingController(text: '');
-    emailController = TextEditingController(text: '');
-    streetController = TextEditingController(text: '');
-    numberController = TextEditingController(text: '');
-    complementController = TextEditingController(text: '');
-    districtController = TextEditingController(text: '');
-    cityController = TextEditingController(text: '');
-    stateController = TextEditingController(text: '');
+    // usernameController = TextEditingController(text: '');
+    // emailController = TextEditingController(text: '');
+    // streetController = TextEditingController(text: '');
+    // numberController = TextEditingController(text: '');
+    // complementController = TextEditingController(text: '');
+    // districtController = TextEditingController(text: '');
+    // cityController = TextEditingController(text: '');
+    // stateController = TextEditingController(text: '');
   }
 }
 // //* Controllers
