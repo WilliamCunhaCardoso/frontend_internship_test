@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:frontent_internship_test/src/app/pages/pages.dart';
+import 'package:frontent_internship_test/src/app/utils/router.dart';
 
-import 'src/app/pages/home/home_view.dart';
+// import 'src/app/pages/home/home_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -9,7 +11,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Qwkin Test',
-      home: HomePage(),
+      onGenerateRoute: Router.generateRoute,
+      initialRoute: Pages.home,
       theme: ThemeData(
         fontFamily: 'Open Sans',
         primarySwatch: Colors.blue,

@@ -51,14 +51,12 @@ class DataUsersRepository extends UserRepository {
   @override
   Future<UserModel> getUser(String userId) async {
     // Here, do some heavy work lke http requests, async tasks, etc to get data
-
     return users.firstWhere((user) => user.userId == userId);
   }
 
   @override
   Future<UserModel> addUser(UserModel user) {
     users.add(user);
-    
     return null;
   }
 }
