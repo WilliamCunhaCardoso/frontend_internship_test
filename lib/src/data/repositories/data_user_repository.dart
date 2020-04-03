@@ -43,20 +43,19 @@ class DataUsersRepository extends UserRepository {
   factory DataUsersRepository() => _instance;
 
   @override
-  Future<List<UserModel>> getAllUsers() async {
+  List<UserModel> getAllUsers() {
     // Here, do some heavy work lke http requests, async tasks, etc to get data
     return users;
   }
 
   @override
-  Future<UserModel> getUser(String userId) async {
+  UserModel getUser(String userId) {
     // Here, do some heavy work lke http requests, async tasks, etc to get data
     return users.firstWhere((user) => user.userId == userId);
   }
 
   @override
-  Future<UserModel> addUser(UserModel user) {
+  addUser(UserModel user) {
     users.add(user);
-    return null;
   }
 }

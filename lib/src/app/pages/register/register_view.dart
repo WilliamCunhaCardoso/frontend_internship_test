@@ -28,21 +28,21 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
               //* all fields contains a controller, a cleaner function controller, save information function, label and visible switch to icon
               //* Personal Fields
               TitleSession(text: 'personal data'),
-              // FormBuilder(
-              //   child: Column(
-              //     children: <Widget>[
-                    // FormBuilderTextField(
-                    //   attribute: 'username',
-                    //   decoration: InputDecoration(hintText: 'Nome'),
-                    //   validators: [
-                    //     FormBuilderValidators.min(1),
-                    //     FormBuilderValidators.max(10),
-                    //     FormBuilderValidators.minLength(2),
-                    //   ],
-                    // ),
-              //     ],
-              //   ),
-              // ),
+              FormBuilder(
+                child: Column(
+                  children: <Widget>[
+                    FormBuilderTextField(
+                      attribute: 'username',
+                      decoration: InputDecoration(hintText: 'Nome'),
+                      validators: [
+                        FormBuilderValidators.min(1),
+                        FormBuilderValidators.max(10),
+                        FormBuilderValidators.minLength(2),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
               // Field(
               //   label: 'Name',
               //   controller: registerController.usernameController,
