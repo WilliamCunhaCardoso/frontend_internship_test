@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
+import 'package:frontent_internship_test/src/app/widgets/custom_bottom_sheet.dart';
 import 'package:frontent_internship_test/src/app/widgets/title_session.dart';
 import 'package:frontent_internship_test/src/data/repositories/data_user_repository.dart';
 
@@ -38,8 +39,6 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       attribute: 'username',
                       decoration: InputDecoration(hintText: 'Name'),
                       validators: [
-                        FormBuilderValidators.min(1),
-                        FormBuilderValidators.max(10),
                         FormBuilderValidators.minLength(2),
                       ],
                       onChanged: (value) => controller.setUsername(value),
@@ -48,7 +47,10 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       attribute: 'email',
                       decoration: InputDecoration(hintText: 'Email'),
                       onChanged: (value) => controller.setEmail(value),
-                      validators: [FormBuilderValidators.email()],
+                      validators: [
+                        FormBuilderValidators.email(),
+                        FormBuilderValidators.minLength(2),
+                      ],
                     ),
                     FormBuilderTextField(
                       attribute: 'phone',
@@ -56,6 +58,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       onChanged: (value) => controller.setPhone(value),
                       validators: [
                         FormBuilderValidators.numeric(),
+                        FormBuilderValidators.minLength(2),
                       ],
                     ),
                     FormBuilderTextField(
@@ -64,6 +67,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       onChanged: (value) => controller.setBirth(value),
                       validators: [
                         FormBuilderValidators.numeric(),
+                        FormBuilderValidators.minLength(2),
                       ],
                     ),
                     FormBuilderTextField(
@@ -72,6 +76,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       onChanged: (value) => controller.setCPF(value),
                       validators: [
                         FormBuilderValidators.numeric(),
+                        FormBuilderValidators.minLength(2),
                       ],
                     ),
                     TitleSession(text: 'address data'),
@@ -81,6 +86,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       onChanged: (value) => controller.setCEP(value),
                       validators: [
                         FormBuilderValidators.numeric(),
+                        FormBuilderValidators.minLength(2),
                       ],
                     ),
                     FormBuilderTextField(
@@ -89,6 +95,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       onChanged: (value) => controller.setStreet(value),
                       validators: [
                         FormBuilderValidators.min(3),
+                        FormBuilderValidators.minLength(2),
                       ],
                     ),
                     Row(
@@ -106,6 +113,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                                       controller.setNumber(value),
                                   validators: [
                                     FormBuilderValidators.numeric(),
+                                    FormBuilderValidators.minLength(1),
                                   ],
                                 ),
                               ],
@@ -124,7 +132,9 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                                       InputDecoration(hintText: 'Complement'),
                                   onChanged: (value) =>
                                       controller.setComplement(value),
-                                  validators: [],
+                                  validators: [
+                                    FormBuilderValidators.minLength(3),
+                                  ],
                                 ),
                               ],
                             ),
@@ -137,6 +147,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       decoration: InputDecoration(hintText: 'District'),
                       onChanged: (value) => controller.setDistrict(value),
                       validators: [
+                        FormBuilderValidators.minLength(3),
                       ],
                     ),
                     FormBuilderTextField(
@@ -144,6 +155,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       decoration: InputDecoration(hintText: 'City'),
                       onChanged: (value) => controller.setCity(value),
                       validators: [
+                        FormBuilderValidators.minLength(3),
                       ],
                     ),
                     FormBuilderTextField(
@@ -151,6 +163,7 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
                       decoration: InputDecoration(hintText: 'State'),
                       onChanged: (value) => controller.setState(value),
                       validators: [
+                        FormBuilderValidators.minLength(3),
                       ],
                     ),
                   ],
@@ -160,18 +173,27 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
             ],
           ),
         ),
+        // bottomSheet: CustomBottomSheet(
+        //   colors: controller.checkIsValid() ? Colors.green : Colors.grey,
+        //   function: () {
+        //     if (_fbKey.currentState.saveAndValidate()) {
+        //       // controller.addUser();
+        //       // Navigator.pop(context);
+        //     }
+        //   },
+        //   router: () => Navigator.pop(context),
+        //   functionEnable: controller.checkIsValid(),
+        // ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => controller.addUser(),
+          onPressed: () {
+            if (_fbKey.currentState.saveAndValidate()) {
+              controller.addUser();
+              Navigator.pop(context);
+            }
+          },
           child: Icon(Icons.add),
         ),
       ),
     );
   }
 }
-
-// CustomBottomSheet(
-//   colors: registerController.isValidAll ? Colors.green : Colors.grey,
-//   function: registerController.addUser,
-//   router: Modular.to.pop,
-//   functionEnable: registerController.isValidAll,
-// ),
