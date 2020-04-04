@@ -11,7 +11,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Qwkin Test',
       onGenerateRoute: Router.generateRoute,
-      initialRoute: Pages.home,
+      initialRoute: home,
       theme: ThemeData(
         fontFamily: 'Open Sans',
         primarySwatch: Colors.blue,

@@ -1,14 +1,15 @@
-import './home_presenter.dart';
-import '../../../domain/entities/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+
+import './home_presenter.dart';
+import '../../../domain/entities/user_model.dart';
 
 class HomeController extends Controller {
   // * List Users Var
   List<UserModel> _users;
   // * List Users Getter
   List<UserModel> get users => _users; // data used by the View
-  
+
   final HomePresenter homePresenter;
   // Presenter should always be initialized this way
 
@@ -28,7 +29,7 @@ class HomeController extends Controller {
     };
     // * On Complete Get All Users
     homePresenter.getAllUsersOnComplete = () {
-      print('Users retrieved'); 
+      print('Users retrieved');
     };
     // * On Error Get All Users
     // On error, show a snackbar, remove the user, and refresh the UI

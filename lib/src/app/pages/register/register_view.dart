@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
 import 'package:frontent_internship_test/src/app/widgets/title_session.dart';
+import 'package:frontent_internship_test/src/data/repositories/data_user_repository.dart';
 
 import 'register_controller.dart';
 
@@ -11,8 +12,8 @@ class RegisterPage extends View {
 }
 
 class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
-  _RegisterPageState() : super(RegisterController());
-
+  _RegisterPageState() : super(RegisterController(DataUsersRepository()));
+  final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   @override
   Widget buildPage() {
     return Scaffold(
@@ -21,138 +22,147 @@ class _RegisterPageState extends ViewState<RegisterPage, RegisterController> {
         key: globalKey,
         body: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16),
-          child: 
-          ListView(
+          child: ListView(
             children: <Widget>[
               //* Field parametrized in the widget Field
               //* all fields contains a controller, a cleaner function controller, save information function, label and visible switch to icon
               //* Personal Fields
-              TitleSession(text: 'personal data'),
               FormBuilder(
+                key: _fbKey,
+                autovalidate: true,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[
+                    TitleSession(text: 'personal data'),
                     FormBuilderTextField(
                       attribute: 'username',
-                      decoration: InputDecoration(hintText: 'Nome'),
+                      decoration: InputDecoration(hintText: 'Name'),
                       validators: [
                         FormBuilderValidators.min(1),
                         FormBuilderValidators.max(10),
                         FormBuilderValidators.minLength(2),
                       ],
+                      onChanged: (value) => controller.setUsername(value),
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'email',
+                      decoration: InputDecoration(hintText: 'Email'),
+                      onChanged: (value) => controller.setEmail(value),
+                      validators: [FormBuilderValidators.email()],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'phone',
+                      decoration: InputDecoration(hintText: 'Phone'),
+                      onChanged: (value) => controller.setPhone(value),
+                      validators: [
+                        FormBuilderValidators.numeric(),
+                      ],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'birth',
+                      decoration: InputDecoration(hintText: 'Birth'),
+                      onChanged: (value) => controller.setBirth(value),
+                      validators: [
+                        FormBuilderValidators.numeric(),
+                      ],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'cpf',
+                      decoration: InputDecoration(hintText: 'CPF'),
+                      onChanged: (value) => controller.setCPF(value),
+                      validators: [
+                        FormBuilderValidators.numeric(),
+                      ],
+                    ),
+                    TitleSession(text: 'address data'),
+                    FormBuilderTextField(
+                      attribute: 'cep',
+                      decoration: InputDecoration(hintText: 'CEP'),
+                      onChanged: (value) => controller.setCEP(value),
+                      validators: [
+                        FormBuilderValidators.numeric(),
+                      ],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'street',
+                      decoration: InputDecoration(hintText: 'Street'),
+                      onChanged: (value) => controller.setStreet(value),
+                      validators: [
+                        FormBuilderValidators.min(3),
+                      ],
+                    ),
+                    Row(
+                      children: <Widget>[
+                        Expanded(
+                          flex: 2,
+                          child: FormBuilder(
+                            child: Column(
+                              children: <Widget>[
+                                FormBuilderTextField(
+                                  attribute: 'number',
+                                  decoration:
+                                      InputDecoration(hintText: 'Number'),
+                                  onChanged: (value) =>
+                                      controller.setNumber(value),
+                                  validators: [
+                                    FormBuilderValidators.numeric(),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: 10),
+                        Expanded(
+                          flex: 3,
+                          child: FormBuilder(
+                            child: Column(
+                              children: <Widget>[
+                                FormBuilderTextField(
+                                  attribute: 'complement',
+                                  decoration:
+                                      InputDecoration(hintText: 'Complement'),
+                                  onChanged: (value) =>
+                                      controller.setComplement(value),
+                                  validators: [],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'district',
+                      decoration: InputDecoration(hintText: 'District'),
+                      onChanged: (value) => controller.setDistrict(value),
+                      validators: [
+                      ],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'city',
+                      decoration: InputDecoration(hintText: 'City'),
+                      onChanged: (value) => controller.setCity(value),
+                      validators: [
+                      ],
+                    ),
+                    FormBuilderTextField(
+                      attribute: 'state',
+                      decoration: InputDecoration(hintText: 'State'),
+                      onChanged: (value) => controller.setState(value),
+                      validators: [
+                      ],
                     ),
                   ],
                 ),
               ),
-              // Field(
-              //   label: 'Name',
-              //   controller: registerController.usernameController,
-              //   onChanged: registerController.setUsername,
-              //   cleaner: registerController.usernameController.clear,
-              //   visible: registerController.isUsernameValid,
-              // ),
-
-              // Field(
-              //   label: 'Email',
-              //   controller: registerController.emailController,
-              //   onChanged: registerController.setEmail,
-              //   cleaner: registerController.emailController.clear,
-              //   visible: registerController.isEmailValid,
-              // ),
-
-              // Field(
-              //   label: 'Phone',
-              //   controller: registerController.phoneController,
-              //   cleaner: registerController.phoneController.clear,
-              //   onChanged: registerController.setPhone,
-              //   visible: registerController.isPhoneValid,
-              // ),
-
-              // Field(
-              //   label: 'Date of Birth',
-              //   controller: registerController.birthController,
-              //   cleaner: registerController.birthController.clear,
-              //   onChanged: registerController.setBirth,
-              //   visible: registerController.isBirthValid,
-              // ),
-
-              // Field(
-              //   label: 'CPF',
-              //   controller: registerController.cpfController,
-              //   cleaner: registerController.cpfController.clear,
-              //   onChanged: registerController.setCPF,
-              //   visible: registerController.isCPFValid,
-              // ),
-
-              // //* Address fields
-              // TitleSession(text: 'address data'),
-
-              // Field(
-              //   label: 'CEP',
-              //   controller: registerController.cepController,
-              //   cleaner: registerController.cpfController.clear,
-              //   onChanged: registerController.setCEP,
-              //   visible: registerController.isCEPValid,
-              // ),
-
-              // Field(
-              //   label: 'Street',
-              //   controller: registerController.streetController,
-              //   cleaner: registerController.cpfController.clear,
-              //   visible: registerController.isStreetValid,
-              //   onChanged: registerController.setStreet,
-              // ),
-              // Row(
-              //   children: <Widget>[
-              //     Expanded(
-              //       flex: 2,
-              //       child: Field(
-              //         label: 'Number',
-              //         controller: registerController.numberController,
-              //         cleaner: registerController.numberController.clear,
-              //         visible: registerController.isNumberValid,
-              //         onChanged: registerController.setNumber,
-              //       ),
-              //     ),
-              //     SizedBox(width: 10),
-              //     Expanded(
-              //       flex: 3,
-              //       child: Field(
-              //         label: 'Complement',
-              //         controller: registerController.complementController,
-              //         cleaner: registerController.complementController.clear,
-              //         visible: registerController.isComplementValid,
-              //         onChanged: registerController.setComplement,
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              // Field(
-              //   label: 'District',
-              //   controller: registerController.districtController,
-              //   cleaner: registerController.districtController.clear,
-              //   visible: registerController.isDistrictValid,
-              //   onChanged: registerController.setDistrict,
-              // ),
-
-              // Field(
-              //   label: 'City',
-              //   controller: registerController.cityController,
-              //   cleaner: registerController.cityController.clear,
-              //   visible: registerController.isCityValid,
-              //   onChanged: registerController.setCity,
-              // ),
-
-              // Field(
-              //   label: 'State',
-              //   controller: registerController.stateController,
-              //   cleaner: registerController.stateController.clear,
-              //   visible: registerController.isStateValid,
-              //   onChanged: registerController.setState,
-              // ),
               SizedBox(height: 40)
             ],
           ),
+        ),
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => controller.addUser(),
+          child: Icon(Icons.add),
         ),
       ),
     );

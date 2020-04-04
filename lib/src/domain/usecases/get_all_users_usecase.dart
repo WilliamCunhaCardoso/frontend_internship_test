@@ -17,7 +17,7 @@ class GetAllUsersUseCase
         StreamController();
     try {
       // get user
-      List<UserModel> users = await usersRepository.getAllUsers();
+      List<UserModel> users = usersRepository.getAllUsers();
       // Adding it triggers the .onNext() in the `Observer`
       // It is usually better to wrap the reponse inside a respose object.
       controller.add(GetAllUsersUseCaseResponse(users));

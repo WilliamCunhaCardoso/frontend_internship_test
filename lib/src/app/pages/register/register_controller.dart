@@ -1,7 +1,22 @@
 // import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:frontent_internship_test/src/app/pages/register/register_presenter.dart';
+import 'package:frontent_internship_test/src/domain/entities/user_model.dart';
 
 class RegisterController extends Controller {
+// //* Strings
+  String username;
+  String email;
+  String phone;
+  String birth;
+  String cpf;
+  String cep;
+  String street;
+  String number;
+  String complement;
+  String district;
+  String city;
+  String state;
   // * Vars
   // TextEditingController usernameController;
   // TextEditingController emailController;
@@ -12,9 +27,27 @@ class RegisterController extends Controller {
   // TextEditingController cityController;
   // TextEditingController stateController;
 
+  final RegisterPresenter registerPresenter;
+
+  RegisterController(usersRepo)
+      : registerPresenter = RegisterPresenter(usersRepo),
+        super();
+
   // * Initializing Listeners
   @override
   void initListeners() {
+    username = '';
+    email = '';
+    phone = '';
+    birth = '';
+    cpf = '';
+    cep = '';
+    street = '';
+    number = '';
+    complement = '';
+    district = '';
+    city = '';
+    state = '';
     // usernameController = TextEditingController(text: '');
     // emailController = TextEditingController(text: '');
     // streetController = TextEditingController(text: '');
@@ -23,6 +56,56 @@ class RegisterController extends Controller {
     // districtController = TextEditingController(text: '');
     // cityController = TextEditingController(text: '');
     // stateController = TextEditingController(text: '');
+  }
+
+  // * Setters
+  setUsername(String value) => username = value;
+  setEmail(String value) => email = value;
+  setPhone(String value) => phone = value;
+  setBirth(String value) => birth = value;
+  setCPF(String value) => cpf = value;
+  setCEP(String value) => cep = value;
+  setStreet(String value) => street = value;
+  setNumber(String value) => number = value;
+  setComplement(String value) => complement = value;
+  setDistrict(String value) => district = value;
+  setCity(String value) => city = value;
+  setState(String value) => state = value;
+
+  void addUser() {
+    var user = 
+    UserModel(
+        userId: '02',
+        username: this.username,
+        email: this.email,
+        phone: this.phone,
+        birth: this.birth,
+        cpf: this.cpf,
+        cep: this.cep,
+        street: this.street,
+        number: int.parse(this.number),
+        complement: this.complement,
+        district: this.district,
+        city: this.city,
+        state: this.state,
+      );
+    // UserModel(
+    //     userId: '02',
+    //     username: 'Teste Case',
+    //     email: 'test.case@email.com',
+    //     phone: '+55 (85) 9.8865-4321',
+    //     birth: '09/11/1998',
+    //     cpf: '508.431.550-94',
+    //     cep: '60810-060',
+    //     street: 'Av. Washington Soares',
+    //     number: 85,
+    //     complement: 'Loja 85',
+    //     district: 'Edson Queiroz',
+    //     city: 'Fortaleza',
+    //     state: 'Ceará',
+    //   );
+
+    registerPresenter.addUser(user);
   }
 }
 // //* Controllers
@@ -43,45 +126,7 @@ class RegisterController extends Controller {
 // TextEditingController cityController = TextEditingController(text: '');
 // TextEditingController stateController = TextEditingController(text: '');
 
-// //* Strings
-// String username = '';
-// String email = '';
-// String phone = '';
-// String birth = '';
-// String cpf = '';
-// String cep = '';
-// String street = '';
-// String number = '';
-// String complement = '';
-// String district = '';
-// String city = '';
-// String state = '';
-
-// //* Setters
-// @action
-// setUsername(String value) => username = value;
-// @action
-// setEmail(String value) => email = value;
-// @action
-// setPhone(String value) => phone = value;
-// @action
-// setBirth(String value) => birth = value;
-// @action
-// setCPF(String value) => cpf = value;
-// @action
-// setCEP(String value) => cep = value;
-// @action
-// setStreet(String value) => street = value;
-// @action
-// setNumber(String value) => number = value;
-// @action
-// setComplement(String value) => complement = value;
-// @action
-// setDistrict(String value) => district = value;
-// @action
-// setCity(String value) => city = value;
-// @action
-// setState(String value) => state = value;
+// //* Setter;
 
 // //* Validators | Functions
 // String validateUsername() {
