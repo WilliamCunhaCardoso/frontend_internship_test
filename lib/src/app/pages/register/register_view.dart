@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:frontent_internship_test/src/app/widgets/custom_bottom_sheet.dart';
-import 'package:frontent_internship_test/src/app/widgets/title_session.dart';
-import 'package:frontent_internship_test/src/data/repositories/data_user_repository.dart';
 
+import '../../widgets/title_session.dart';
+import '../../../data/repositories/data_user_repository.dart';
 import 'register_controller.dart';
 
 class RegisterPage extends View {
